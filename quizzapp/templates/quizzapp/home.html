@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+{% extends "quizzapp/base2.html" %}
+{% load static %}
+
+{% block content %}
+        <div class="modal fade" id="popup" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Member login</h5>
+                        <a class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </a>
+                    </div>
+                    <form method="post" action="{% url 'register' %}">
+                        <div class="form-elem">
+                            <div class="modal-body">
+                                <div class="form-elem">
+                                    <p>Username</p>
+                                    <input type="text" required id="username" name="username"><br><br>
+                                </div>
+                                <div class="form-elem">
+                                    <p>Password</p>
+                                    <input type="password" required name="password">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <div class="btn">
+                                    <div class="inner">
+                                        <div class="form-elem">
+                                            <button type="submit" class="button" value="login" data-dismiss="modal">Login</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <h1>Microscopy test QUIZZ</h1>
+        <p>Learn by practicing !</p>
+        <img src="{% static "css/66666.jpeg" %}" width="450" height="450" alt="Accueil"><br>
+        <a href="/try/" class="button">Try a random QUIZZ !</a><br><br>
+{% endblock%}

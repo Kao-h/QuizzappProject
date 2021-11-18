@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+{% extends "quizzapp/base.html" %}
+{% load static %}
+
+{% block content %}
+<table id="myTable" class="tablesorter">
+    <thead>
+        <tr>
+            <th class="th-sm">Image</th>
+            <th class="th-sm">Description</th>
+            <th class="th-sm">Microscopy</th>
+            <th class="th-sm">Cellule type</th>
+            <th class="th-sm">Component</th>
+            <th class="th-sm">Doi</th>
+            <th class="th-sm">Organism</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for image in images %}
+            <tr>
+                <td><img src="{% static image.image_name %}" width="200" height="200" alt="Try"></td>
+                <td>{{ image.description }}</td>
+                <td>{{ image.microscopy }}</td>
+                <td>{{ image.cell_type }}</td>
+                <td>{{ image.component }}</td>
+                <td>{{ image.doi }}</td>
+                <td>{{ image.organism }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+    <tfoot>
+        <tr>
+            <th>Image</th>
+            <th>Description</th>
+            <th>Microscopy</th>
+            <th>Cellule type</th>
+            <th>Component</th>
+            <th>Doi</th>
+            <th>Organism</th>
+        </tr>
+    </tfoot>
+</table>
+{% endblock %}

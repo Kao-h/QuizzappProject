@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+
+{% extends "quizzapp/base.html" %}
+{% load static %}
+
+{% block content %}
+    <h1>Microscopy test Quizz</h1>
+    <p>Learn by practicing !</p>
+    <img src="{% static "css/66666.jpeg" %}" width="400" height="400" alt="Accueil">
+    <p>Choose a Quizz category :</p>
+    <a href="microscopy/" class="button">Microscopy</a>
+    <a href="biological/" class="button">Biological context</a><br><br>
+    <p>You can also explore the images :</p>
+    <a href="explore/" class="button">Explore the images</a><br>
+{% endblock %}

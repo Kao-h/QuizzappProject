@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+{% extends "quizzapp/base2.html" %}
+{% load static %}
+
+{% block content %}
+<div id="popup" class="modal fade hide" role="dialog" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                    <p>Answer </p>
+            </div>
+            <div class="modal-body">
+                <p>The correct answer is : {{ answer }} worth {{ question_points }} points</p>
+                <p>{{ answer_definition }}</p>
+            </div>
+            <div class="modal-footer">
+                <a href="/" type="button" class="btn btn-secondary">Quit</a>
+                <a href="/try" type="button" class="btn btn-secondary">Next question</a>
+            </div>
+        </div>
+    </div>
+</div>
+    <br><br>{% for image in images %}
+    <img src="{% static image %}" width="350" height="350" alt="Try">
+{% endfor %}<br><br><br>
+<p>{{ question }}</p><br>
+{% for answer in possible_answers %}
+    <button type="button" class="bigbutton" data-toggle="modal" data-target="#popup" id="result">{{ answer }}</button>
+{% endfor %}<br><br><br>
+{% endblock %}

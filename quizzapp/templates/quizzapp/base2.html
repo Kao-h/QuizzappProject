@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html>
+    <head>
+        <title>Quizz</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static "css/my.css" %}">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.min.js" integrity="sha512-8qmis31OQi6hIRgvkht0s6mCOittjMa9GMqtK9hes5iEQBQE/Ca6yGE5FsW36vyipGoWQswBj/QBm2JR086Rkw==" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    </head>
+    <body>
+    <div class="header">
+        <div class="wrapper">
+            <div class="display">
+                <div id="time"></div>
+            </div>
+            <span></span>
+            <span></span>
+        </div>
+
+    <img src="{% static "css/CIL.jpg" %}" class="imageflottante" width="180" height="80" alt="Accueil"><br><br><br>
+    </div>
+
+    <div class="navigation">
+        <input type="checkbox" id="btn" hidden>
+        <label for="btn" class="menu-btn">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-times"></i>
+        </label>
+        <nav id="sidebar">
+            <div class="title">Menu</div>
+            <ul class="list-items">
+                <li><a href="/"><i class="fas fa-home"></i>Home</a></li>
+                <!--<li><a data-toggle="modal" data-target="#popup"><i class="fas fa-user"></i>Login/Register</a></li>-->
+
+                <li><a href="/register"><i class="fas fa-user"></i>Login/Register {{ user }}</a></li>
+                <li><a href="/try/"><i class="fas fa-arrow-circle-right"></i>Random quizz</a></li>
+                <li><a href="/quizz/"><i class="fas fa-question"></i>Choose Quizz</a></li>
+            </ul>
+        </nav>
+    </div>
+    {% block content %}
+    {% endblock %}
+    <footer class="page-footer font-small blue">
+        <div class="footer-copyright text-center py-3">© 2021 Copyright:
+            <a>Kaouther HARBI</a>
+        </div>
+    </footer>
+    </body>
+</html>
