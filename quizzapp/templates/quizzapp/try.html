@@ -4,28 +4,65 @@
 {% load static %}
 
 {% block content %}
-<div id="popup" class="modal fade hide" role="dialog" data-backdrop="static">
-    <div class="modal-dialog modal-dialog-scrollable">
-        <div class="modal-content">
-            <div class="modal-header">
-                    <p>Answer </p>
-            </div>
-            <div class="modal-body">
-                <p>The correct answer is : {{ answer }} worth {{ question_points }} points</p>
-                <p>{{ answer_definition }}</p>
-            </div>
-            <div class="modal-footer">
-                <a href="/" type="button" class="btn btn-secondary">Quit</a>
-                <a href="/try" type="button" class="btn btn-secondary">Next question</a>
+    <div id="popup" class="modal fade hide" role="dialog" data-backdrop="static">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div id="modal-header">
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div id="modal-body">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-secondary" data-dismiss="modal" OnClick="window.location.reload()" value="Next question">
+                </div>
             </div>
         </div>
     </div>
-</div>
     <br><br>{% for image in images %}
-    <img src="{% static image %}" width="350" height="350" alt="Try">
-{% endfor %}<br><br><br>
-<p>{{ question }}</p><br>
-{% for answer in possible_answers %}
-    <button type="button" class="bigbutton" data-toggle="modal" data-target="#popup" id="result">{{ answer }}</button>
-{% endfor %}<br><br><br>
+        <img src="{% static image %}" width="350" height="350" alt="Try">
+    {% endfor %}<br><br>
+    <p>{{ question }}</p><br>
+    {% for answer_t in possible_answers %}
+        <button type="button" class="bigbutton" data-toggle="modal" data-target="#popup" id="result" ans="{{ answer_t }}"
+                correct_ans="{{ answer }}" description="{{ answer_definition }}">{{ answer_t }}</button>
+    {% endfor %}<br><br><br>
+
+    <script type="text/javascript">
+
+    const possible_answers = [...document.getElementsByClassName('bigbutton')]
+    const modalBody = document.getElementById('modal-body')
+    const modalHead = document.getElementById('modal-header')
+
+    possible_answers.forEach(answer=> answer.addEventListener('click', ()=>{
+        const correct_ans = answer.getAttribute('correct_ans')
+        const ans = answer.getAttribute('ans')
+        const description = answer.getAttribute('description')
+        console.log(ans)
+        console.log(correct_ans)
+        if (ans === correct_ans){
+            console.log("GOOD ANSWER")
+            modalHead.innerHTML = `
+                <p style="color:rgb(0,128,0)"> &#128076;&#128076;  Your answer is correct  &#128079;&#128079;</p>
+            `
+            modalBody.innerHTML = `
+                <p>${description}</p>
+            `
+        }
+        else {
+            console.log("BAD ANSWER")
+            modalHead.innerHTML = `
+                <p style="color:rgb(255,0,0)">  &#128549; Your answer is wrong</p>
+            `
+            modalBody.innerHTML = `
+                <p style="color:black;">${description}</p>
+            `
+        }
+
+
+    }))
+
+    </script>
 {% endblock %}

@@ -45,7 +45,7 @@
         if (ans === correct_ans){
             console.log("GOOD ANSWER")
             modalHead.innerHTML = `
-                <p>Your answer is correct</p>
+                <p style="color:rgb(0,128,0)"> &#128076;&#128076;  Your answer is correct  &#128079;&#128079;</p>
             `
             modalBody.innerHTML = `
                 <p>${description}</p>
@@ -54,10 +54,10 @@
         else {
             console.log("BAD ANSWER")
             modalHead.innerHTML = `
-                <p>Your answer is wrong</p>
+                <p style="color:rgb(255,0,0)">  &#128549; Your answer is wrong</p>
             `
             modalBody.innerHTML = `
-                <p>${description}</p>
+                <p style="color:black;">${description}</p>
             `
         }
 
