@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-
+# file to implement the modes created in models
 from quizzapp.models import Images
 from quizzapp.models import Questions
 from quizzapp.models import Answers

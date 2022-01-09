@@ -5,12 +5,11 @@ from random import randint, sample, choice, shuffle
 from .forms import CreateUserForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
-
+# we create the different functions used
 
 # Create your views here.
 def home(request):
     return render(request, 'quizzapp/home.html')
-
 
 def try_it(request):
     id = randint(1, 2)

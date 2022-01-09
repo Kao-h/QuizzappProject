@@ -1,6 +1,6 @@
 from django.db import models
 
-# Create your models here.
+# Create the tables needed in the data base
 class Images(models.Model):
     image_name = models.IntegerField()
     description = models.TextField()
